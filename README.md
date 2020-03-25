@@ -1,6 +1,6 @@
 # python-scraping-corona-virus-data
 This web scraping is legal since the data is publicly available and not restricted
-
+Python 3.4 is used to make this program
 You will need to install following library if you haven't already
 
 BeautifulSoup, use 
