@@ -6,7 +6,7 @@ def covidTracker():
     #next line is for "Threading", multi threading and so, you can also use infinite while loop
     #we create a thread and set a timer of 20 seconds to. So that the thread(our program) will run every 20 sec
     #threading.Timer([timeInterval], [definition(function) name to run]).start() [ '.start()' function to start threading]
-    threading.Timer(20.0, covidTracker).start()
+    threading.Timer(60.0, covidTracker).start()
     #passing the URL we want our program to look for
     #we pass it as a string, in python you need not declare the variable in the beginning unless you loop over it
     url = "https://www.mohfw.gov.in/"
@@ -20,7 +20,7 @@ def covidTracker():
 
     #we remove the part of page that we need from the whole page
     #we need a 'div' tag which is given class = 'content newtab' e.g. <div class="content newtab"> {..required data..} </div>
-    requiredPartOfPage = soup.findAll('div', {'class':'content newtab'})
+    requiredPartOfPage = soup.findAll('section', {'id':'state-data'})
 
     #opening a document named helloworldCorona.html which our program will auto generate 'w' stands for 'write' mode
     f = open('helloworldCorona.html','w')
@@ -32,14 +32,18 @@ def covidTracker():
 
     #we loop 'requiredPartOfPage' to get the 2nd and 4th item in the list. imp: list starts from 0 and not 1
     #you can check why we do so by doing : print(page)
+    i = 0
     for reqdPara in requiredPartOfPage:
         page+=reqdPara
-        para = page[1]
-        table = page[3]
+        #print(page[i]+ ' <h1>no:' + str(reqdPara))
+        #i+=1
+        #para = page[1]
+        table = page[1]
 
+    #print(page)
     #we build a clean html file as below, this is also sstored in string format.
     #we use a inbuilt typecasting function 'str()' to convert list data format to string data format
-    cleanHTML = "<html> <body>" + str(para) + str(table) + "</body> </html>"
+    cleanHTML = "<html> <body>" + str(table) + "</body> </html>"
 
     #write the string, 'cleanHTML' to our html file and then close the file by 'f.close()'
     f.write(cleanHTML)
