@@ -27,17 +27,13 @@ def covidTracker():
 
     #we initialise 3 lists as the tag data is in list format, you can try with dictionary and tuples as well!
     page = []
-    para = []
     table = []
 
     #we loop 'requiredPartOfPage' to get the 2nd and 4th item in the list. imp: list starts from 0 and not 1
     #you can check why we do so by doing : print(page)
-    i = 0
+
     for reqdPara in requiredPartOfPage:
         page+=reqdPara
-        #print(page[i]+ ' <h1>no:' + str(reqdPara))
-        #i+=1
-        #para = page[1]
         table = page[1]
 
     #print(page)
